@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="CopyrightManager" default="" />
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/dawn/ekart-hera" value="8777204766000" />
+        <entry key="$USER_HOME$/dawn/fk-sp-skynet" value="2924719450000" />
+        <entry key="$USER_HOME$/dawn/hector" value="2922289212000" />
+        <entry key="$USER_HOME$/dawn/seller-mobile-api" value="2906912198000" />
+        <entry key="$USER_HOME$/dawn/sp-skynet" value="2921443040000" />
+        <entry key="$PROJECT_DIR$/../Reseller" value="2828829932000" />
+        <entry key="$PROJECT_DIR$/../backup/fk-seller-mobile-api/gradle" value="5657892268000" />
+        <entry key="$PROJECT_DIR$/../case-manager-contact-service" value="2866619354000" />
+        <entry key="$PROJECT_DIR$/../cosmos-doclet" value="2921278354000" />
+        <entry key="$PROJECT_DIR$/../dropwizard-livelogger" value="2910717497000" />
+        <entry key="$PROJECT_DIR$/../fk-seller-mAPI" value="2826523262000" />
+        <entry key="$PROJECT_DIR$/../fk-sp-common-clients" value="2929519448000" />
+        <entry key="$PROJECT_DIR$/../fk-sp-skynet" value="2929205539000" />
+        <entry key="$PROJECT_DIR$/../gen-projects/argos/gradle" value="13156556733000" />
+        <entry key="$PROJECT_DIR$/../gen/comics" value="5847360064000" />
+        <entry key="$PROJECT_DIR$/../gen/explosm" value="5847365552000" />
+        <entry key="$PROJECT_DIR$/../group-type" value="2826687766000" />
+        <entry key="$PROJECT_DIR$/../hackday_6_nowontap/server/agent-service/gradle" value="10034497480000" />
+        <entry key="$PROJECT_DIR$/../hackday_6_nowontap/server/dropwizard-gradle-master" value="1364345438000" />
+        <entry key="$PROJECT_DIR$/../mp-partner" value="2830033598000" />
+        <entry key="$PROJECT_DIR$/../pegasus" value="2917116737000" />
+        <entry key="$PROJECT_DIR$/../project-templates/dropwizard8" value="2895666308000" />
+        <entry key="$PROJECT_DIR$/../seller-analytics" value="2828807954000" />
+        <entry key="$PROJECT_DIR$/../seller-master" value="2826549830000" />
+        <entry key="$PROJECT_DIR$/../seller-mobile-api" value="2906665828000" />
+        <entry key="$PROJECT_DIR$/../seller-onboarding-service" value="2866818752000" />
+        <entry key="$PROJECT_DIR$/../simon" value="2844716462000" />
+        <entry key="$PROJECT_DIR$/../sla/gradle" value="9970882005000" />
+        <entry key="$PROJECT_DIR$/../temp/oatmeal" value="5847488240000" />
+        <entry key="$PROJECT_DIR$/../temp/seller-mobile-api/gradle" value="9914089269000" />
+        <entry key="$PROJECT_DIR$/../we-proxy" value="5859022012000" />
+        <entry key="$PROJECT_DIR$/../weproxy" value="5859022996000" />
+        <entry key="$PROJECT_DIR$/../xylo" value="5847386480000" />
+        <entry key="$USER_HOME$/gamejam/GameDevTut" value="5687725828000" />
+        <entry key="$USER_HOME$/ggjam" value="7110113582000" />
+        <entry key="$USER_HOME$/project-templates/dropwizard8" value="2907692573000" />
+        <entry key="$USER_HOME$/staff" value="5850159908000" />
+        <entry key="$USER_HOME$/temp/durga" value="5850175896000" />
+        <entry key="$USER_HOME$/temp/smbc" value="5850182156000" />
+        <entry key="$USER_HOME$/tmp/tataca" value="5851842132000" />
+      </map>
+    </option>
+  </component>
+  <component name="IdProvider" IDEtalkID="DBCDAD3B79AA2F53433C8F892558CC90" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/dawn" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="0" />
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
