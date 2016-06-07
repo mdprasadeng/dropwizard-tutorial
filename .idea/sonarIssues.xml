@@ -13,6 +13,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com.solvevolve.dropwizard/HelloResource.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com.solvevolve.dropwizard/Main.java">
           <value>
             <set />
@@ -24,6 +29,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/main/java/com.solvevolve.dropwizard/ManagerConfiguration.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/solvevolve/dropwizard/ManagerApplication.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/com/solvevolve/jersey/HelloResource.java">
           <value>
             <set />
           </value>
