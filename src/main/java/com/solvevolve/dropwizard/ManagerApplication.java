@@ -1,6 +1,7 @@
 package com.solvevolve.dropwizard;
 
 import com.solvevolve.jersey.HelloResource;
+import com.solvevolve.jersey.UserResource;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
@@ -14,5 +15,6 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
     System.out.println("admin port :8081 for application");
 
     environment.jersey().register(HelloResource.class);
+    environment.jersey().register(UserResource.class);
   }
 }
