@@ -1,17 +1,26 @@
 package com.solvevolve.dropwizard;
 
-import io.dropwizard.Configuration;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+import io.dropwizard.Configuration;
+import io.dropwizard.client.JerseyClientConfiguration;
+import lombok.Data;
+
+@Data
 public class ManagerConfiguration extends Configuration{
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
+  @Valid
+  @NotNull
   private String name;
+
+
+  @Valid
+  @NotNull
+  private JerseyClientConfiguration jerseyClient;
+
+  @Valid
+  @NotNull
+  private String firebaseUrl;
 
 }

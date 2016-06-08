@@ -1,3 +1,18 @@
+firebaseUrl: https://dropwizard-tutorial.firebaseio.com
+
+jerseyClient:
+  timeout: 10000ms
+  connectionTimeout: 10000ms
+  timeToLive: 1 hour
+  cookiesEnabled: false
+  maxConnections: 2048
+  maxConnectionsPerRoute: 2048
+  keepAlive: 0s
+  minThreads: 1
+  maxThreads: 1000
+  gzipEnabled: false
+  gzipEnabledForRequests: false
+
 name: test
 logging:
   level: INFO

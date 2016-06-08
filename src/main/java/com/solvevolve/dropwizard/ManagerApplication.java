@@ -3,7 +3,14 @@ package com.solvevolve.dropwizard;
 import com.solvevolve.jersey.HelloResource;
 import com.solvevolve.jersey.UserResource;
 
+import org.glassfish.jersey.filter.LoggingFilter;
+
+import java.util.logging.Logger;
+
+import javax.ws.rs.client.Client;
+
 import io.dropwizard.Application;
+import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.setup.Environment;
 
 public class ManagerApplication extends Application<ManagerConfiguration> {
@@ -15,6 +22,14 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
     System.out.println("admin port :8081 for application");
 
     environment.jersey().register(HelloResource.class);
-    environment.jersey().register(UserResource.class);
+
+
+    Client client = new JerseyClientBuilder(environment)
+        .using(configuration.getJerseyClient())
+        .build("client");
+
+    client.register(new LoggingFilter(Logger.getLogger("ClientLogger"), true));
+
+    environment.jersey().register(new UserResource(client, configuration.getFirebaseUrl()));
   }
 }
