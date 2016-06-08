@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 public class UserResource {
 
   @GET
-  public User getUser(@QueryParam("email") String email) {
+  public User getUser(@QueryParam("phone") String phone) {
     User user = new User();
     user.setName("Test");
     user.setEmail("test@test.com");
