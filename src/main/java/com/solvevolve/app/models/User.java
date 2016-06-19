@@ -10,4 +10,11 @@ public class User {
   private String name;
   private String email;
   private String phoneNumber;
+  private Network network;
+
+  @Data
+  public static class Network {
+    private String provider;
+    private String state;
+  }
 }

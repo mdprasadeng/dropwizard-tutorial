@@ -14,10 +14,17 @@ public class UserResource {
 
   @GET
   public User getUser(@QueryParam("phone") String phone) {
+
+
     User user = new User();
     user.setName("Test");
     user.setEmail("test@test.com");
     user.setPhoneNumber("999999999999");
+
+    User.Network network = new User.Network();
+    network.setProvider("Airtel");
+    network.setState("Karnataka");
+    user.setNetwork(network);
     return user;
   }
 }
