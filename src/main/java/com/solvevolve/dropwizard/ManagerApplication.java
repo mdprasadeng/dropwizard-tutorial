@@ -1,21 +1,18 @@
 package com.solvevolve.dropwizard;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import com.google.inject.Provides;
+
 import com.solvevolve.app.entities.User;
 import com.solvevolve.jersey.HelloResource;
 import com.solvevolve.jersey.UserResource;
-import com.solvevolve.jpa.UserDAO;
-import com.solvevolve.pnclient.PNClient;
-import com.solvevolve.pnclient.PNClientProvider;
+import com.solvevolve.pnclient.PNClientModule;
 
-import org.glassfish.jersey.filter.LoggingFilter;
-
-import java.util.logging.Logger;
-
-import javax.ws.rs.client.Client;
+import org.hibernate.SessionFactory;
 
 import io.dropwizard.Application;
-import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -48,24 +45,40 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
   }
 
   @Override
-  public void run(ManagerConfiguration configuration, Environment environment) throws Exception {
+  public void run(final ManagerConfiguration configuration, final Environment environment) throws Exception {
     System.out.println("Server is running using");
     System.out.println("default port :8080 for application");
     System.out.println("admin port :8081 for application");
 
-    UserDAO userDAO = new UserDAO(hibernate.getSessionFactory());
+    Injector injector = Guice.createInjector(
+        new AbstractModule() {
+          @Override
+          protected void configure() {
 
-    environment.jersey().register(HelloResource.class);
+          }
+
+          @Provides
+          private SessionFactory getSessionFactory() {
+            return hibernate.getSessionFactory();
+          }
+
+          @Provides
+          ManagerConfiguration getManagerConfig() {
+            return configuration;
+          }
+
+          @Provides
+          Environment getEnvironment() {
+            return environment;
+          }
+        },
+        new ManagerModule(),
+        new PNClientModule()
+    );
 
 
-    Client client = new JerseyClientBuilder(environment)
-        .using(configuration.getJerseyClient())
-        .build("client");
 
-    client.register(new LoggingFilter(Logger.getLogger("ClientLogger"), true));
-
-    PNClient pnClient = PNClientProvider.getPNClient(client, configuration.getPnConfiguration());
-
-    environment.jersey().register(new UserResource(userDAO, pnClient));
+    environment.jersey().register(injector.getInstance(HelloResource.class));
+    environment.jersey().register(injector.getInstance(UserResource.class));
   }
 }

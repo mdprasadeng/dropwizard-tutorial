@@ -1,5 +1,8 @@
 package com.solvevolve.dropwizard;
 
+import com.google.inject.AbstractModule;
+import com.google.inject.Provides;
+
 import com.solvevolve.pnclient.PNConfiguration;
 
 import io.dropwizard.Configuration;

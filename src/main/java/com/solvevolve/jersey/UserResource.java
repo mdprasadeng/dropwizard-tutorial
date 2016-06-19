@@ -1,5 +1,7 @@
 package com.solvevolve.jersey;
 
+import com.google.inject.Inject;
+
 import com.solvevolve.app.entities.User;
 import com.solvevolve.app.models.UserWrapped;
 import com.solvevolve.jpa.UserDAO;
@@ -27,7 +29,7 @@ public class UserResource {
   private final UserDAO userDAO;
   private final PNClient pnClient;
 
-
+  @Inject
   public UserResource(UserDAO userDAO, PNClient pnClient) {
     this.userDAO = userDAO;
     this.pnClient = pnClient;

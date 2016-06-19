@@ -1,5 +1,7 @@
 package com.solvevolve.jpa;
 
+import com.google.inject.Inject;
+
 import com.solvevolve.app.entities.User;
 
 import org.hibernate.Query;
@@ -12,11 +14,7 @@ import io.dropwizard.hibernate.AbstractDAO;
 
 public class UserDAO extends AbstractDAO<User> {
 
-  /**
-   * Creates a new DAO with a given session provider.
-   *
-   * @param sessionFactory a session provider
-   */
+  @Inject
   public UserDAO(SessionFactory sessionFactory) {
     super(sessionFactory);
   }

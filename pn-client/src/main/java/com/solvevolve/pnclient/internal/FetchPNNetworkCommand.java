@@ -1,5 +1,8 @@
 package com.solvevolve.pnclient.internal;
 
+import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
+
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
 import com.netflix.hystrix.HystrixCommandProperties;
@@ -18,7 +21,8 @@ public class FetchPNNetworkCommand extends HystrixCommand<Optional<PNNetwork>> {
   private final PNConfiguration pnConfiguration;
   private final String phoneNumber;
 
-  public FetchPNNetworkCommand(Client client, PNConfiguration pnConfiguration, String phoneNumber) {
+  @Inject
+  public FetchPNNetworkCommand(Client client, PNConfiguration pnConfiguration, @Assisted String phoneNumber) {
     super(Setter.withGroupKey(HystrixCommandGroupKey.Factory.asKey("pn-client"))
               .andCommandPropertiesDefaults(HystrixCommandProperties.Setter()
                                                 .withExecutionTimeoutInMilliseconds(5000)));
@@ -43,5 +47,9 @@ public class FetchPNNetworkCommand extends HystrixCommand<Optional<PNNetwork>> {
     } else {
       return Optional.empty();
     }
+  }
+
+  public static interface FetchPNNetworkFactory {
+    FetchPNNetworkCommand getFetchPNCommand(String phoneNumber);
   }
 }
