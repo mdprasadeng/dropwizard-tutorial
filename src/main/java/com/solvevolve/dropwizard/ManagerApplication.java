@@ -1,10 +1,18 @@
 package com.solvevolve.dropwizard;
 
 import com.solvevolve.app.entities.User;
+import com.solvevolve.jersey.HelloResource;
 import com.solvevolve.jersey.UserResource;
 import com.solvevolve.jpa.UserDAO;
 
+import org.glassfish.jersey.filter.LoggingFilter;
+
+import java.util.logging.Logger;
+
+import javax.ws.rs.client.Client;
+
 import io.dropwizard.Application;
+import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.migrations.MigrationsBundle;
@@ -13,12 +21,14 @@ import io.dropwizard.setup.Environment;
 
 public class ManagerApplication extends Application<ManagerConfiguration> {
 
-  private final HibernateBundle<ManagerConfiguration> hibernate = new HibernateBundle<ManagerConfiguration>(User.class) {
-    @Override
-    public DataSourceFactory getDataSourceFactory(ManagerConfiguration configuration) {
-      return configuration.getDataSource();
-    }
-  };
+  private final HibernateBundle<ManagerConfiguration>
+      hibernate =
+      new HibernateBundle<ManagerConfiguration>(User.class) {
+        @Override
+        public DataSourceFactory getDataSourceFactory(ManagerConfiguration configuration) {
+          return configuration.getDataSource();
+        }
+      };
 
   @Override
   public void initialize(Bootstrap<ManagerConfiguration> bootstrap) {
@@ -42,6 +52,15 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
 
     UserDAO userDAO = new UserDAO(hibernate.getSessionFactory());
 
-    environment.jersey().register(new UserResource(userDAO));
+    environment.jersey().register(HelloResource.class);
+
+    Client client = new JerseyClientBuilder(environment)
+        .using(configuration.getJerseyClient())
+        .build("client");
+
+    client.register(new LoggingFilter(Logger.getLogger("ClientLogger"), true));
+
+    environment.jersey().register(
+        new UserResource(userDAO, client, configuration.getPhoneNetworkClientConfiguration()));
   }
 }
