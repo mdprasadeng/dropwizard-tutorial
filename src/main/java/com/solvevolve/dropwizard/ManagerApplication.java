@@ -1,9 +1,12 @@
 package com.solvevolve.dropwizard;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.solvevolve.app.entities.User;
 import com.solvevolve.jersey.HelloResource;
 import com.solvevolve.jersey.UserResource;
 import com.solvevolve.jpa.UserDAO;
+import com.solvevolve.pnclient.PNClient;
+import com.solvevolve.pnclient.PNClientProvider;
 
 import org.glassfish.jersey.filter.LoggingFilter;
 
@@ -54,13 +57,15 @@ public class ManagerApplication extends Application<ManagerConfiguration> {
 
     environment.jersey().register(HelloResource.class);
 
+
     Client client = new JerseyClientBuilder(environment)
         .using(configuration.getJerseyClient())
         .build("client");
 
     client.register(new LoggingFilter(Logger.getLogger("ClientLogger"), true));
 
-    environment.jersey().register(
-        new UserResource(userDAO, client, configuration.getPhoneNetworkClientConfiguration()));
+    PNClient pnClient = PNClientProvider.getPNClient(client, configuration.getPnConfiguration());
+
+    environment.jersey().register(new UserResource(userDAO, pnClient));
   }
 }

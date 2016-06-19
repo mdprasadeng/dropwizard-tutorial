@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+import java.util.Optional;
 
 import io.dropwizard.hibernate.AbstractDAO;
 
@@ -29,10 +30,14 @@ public class UserDAO extends AbstractDAO<User> {
   }
 
 
-  public User findByPhoneNumber(String phoneNumber) {
+  public Optional<User> findByPhoneNumber(String phoneNumber) {
     Query query = namedQuery("findUserByPhoneNumber");
     query.setString("phoneNumber", phoneNumber);
     List<User> users = query.list();
-    return users.get(0);
+    if (users.size() == 1) {
+      return Optional.of(users.get(0));
+    } else {
+      return Optional.empty();
+    }
   }
 }

@@ -1,5 +1,7 @@
 package com.solvevolve.dropwizard;
 
+import com.solvevolve.pnclient.PNConfiguration;
+
 import io.dropwizard.Configuration;
 import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.db.DataSourceFactory;
@@ -9,15 +11,9 @@ import lombok.Data;
 public class ManagerConfiguration extends Configuration{
 
   private String name;
-  private PhoneNetworkClientConfiguration phoneNetworkClientConfiguration;
+  private PNConfiguration pnConfiguration;
 
   private DataSourceFactory dataSource;
   private JerseyClientConfiguration jerseyClient;
-
-  @Data
-  public static class PhoneNetworkClientConfiguration {
-    private String url;
-    private String networkPath = "network";
-  }
 
 }

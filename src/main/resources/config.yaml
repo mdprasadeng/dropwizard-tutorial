@@ -1,4 +1,4 @@
-phoneNetworkClientConfiguration:
+pnConfiguration:
  url: https://dropwizard-tutorial.firebaseio.com
 
 jerseyClient:

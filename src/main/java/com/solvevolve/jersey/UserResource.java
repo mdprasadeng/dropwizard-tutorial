@@ -2,19 +2,20 @@ package com.solvevolve.jersey;
 
 import com.solvevolve.app.entities.User;
 import com.solvevolve.app.models.UserWrapped;
-import com.solvevolve.dropwizard.ManagerConfiguration;
 import com.solvevolve.jpa.UserDAO;
+import com.solvevolve.pnclient.PNClient;
+import com.solvevolve.pnclient.PNNetwork;
 
+import java.util.Optional;
+
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import io.dropwizard.hibernate.UnitOfWork;
 
@@ -24,14 +25,12 @@ import io.dropwizard.hibernate.UnitOfWork;
 public class UserResource {
 
   private final UserDAO userDAO;
-  private final Client client;
-  private final ManagerConfiguration.PhoneNetworkClientConfiguration pnConfig;
+  private final PNClient pnClient;
 
-  public UserResource(UserDAO userDAO, Client client,
-                      ManagerConfiguration.PhoneNetworkClientConfiguration phoneNetworkClientConfiguration) {
+
+  public UserResource(UserDAO userDAO, PNClient pnClient) {
     this.userDAO = userDAO;
-    this.client = client;
-    this.pnConfig = phoneNetworkClientConfiguration;
+    this.pnClient = pnClient;
   }
 
 
@@ -41,18 +40,21 @@ public class UserResource {
     User user = getUser(userWrapped);
     userDAO.create(user);
 
-    Response response = client.target(pnConfig.getUrl())
-        .path(pnConfig.getNetworkPath())
-        .path(userWrapped.getPhoneNumber() + ".json")
-        .request()
-        .accept(MediaType.APPLICATION_JSON_TYPE)
-        .put(Entity.json(userWrapped.getNetwork()));
+    boolean saveNetwork =
+        pnClient.saveNetwork(userWrapped.getPhoneNumber(), getPnNetwork(userWrapped));
 
-    if (response.getStatus() == 200 ) {
+    if (saveNetwork) {
       return userWrapped;
     } else {
-     throw new RuntimeException("Failed to save network details");
+      throw new RuntimeException("Failed to save network details");
     }
+  }
+
+  private PNNetwork getPnNetwork(UserWrapped userWrapped) {
+    PNNetwork pnNetwork = new PNNetwork();
+    pnNetwork.setState(userWrapped.getNetwork().getState());
+    pnNetwork.setProvider(userWrapped.getNetwork().getProvider());
+    return pnNetwork;
   }
 
   private User getUser(UserWrapped userWrapped) {
@@ -67,26 +69,28 @@ public class UserResource {
   @UnitOfWork
   public UserWrapped getUser(@QueryParam("phone") String phone) {
 
-    User user = userDAO.findByPhoneNumber(phone);
+    Optional<User> userOptional = userDAO.findByPhoneNumber(phone);
+    if (!userOptional.isPresent()) {
+      throw new BadRequestException("User doesn't exist");
+    }
+    Optional<PNNetwork> networkOptional = pnClient.getNetwork(phone);
 
-    UserWrapped userWrapped = getUserWrapped(user);
+    return getUserWrapped(userOptional.get(), networkOptional);
 
-    UserWrapped.Network network = client.target(pnConfig.getUrl())
-        .path(pnConfig.getNetworkPath())
-        .path(phone + ".json")
-        .request()
-        .accept(MediaType.APPLICATION_JSON_TYPE)
-        .get(UserWrapped.Network.class);
-
-    userWrapped.setNetwork(network);
-    return userWrapped;
   }
 
-  private UserWrapped getUserWrapped(User user) {
+  private UserWrapped getUserWrapped(User user, Optional<PNNetwork> networkOptional) {
     UserWrapped userWrapped = new UserWrapped();
     userWrapped.setName(user.getName());
     userWrapped.setEmail(user.getEmail());
     userWrapped.setPhoneNumber(user.getPhoneNumber());
+
+    if (networkOptional.isPresent()) {
+      UserWrapped.Network network = new UserWrapped.Network();
+      network.setProvider(networkOptional.get().getProvider());
+      network.setState(networkOptional.get().getState());
+      userWrapped.setNetwork(network);
+    }
     return userWrapped;
   }
 }
