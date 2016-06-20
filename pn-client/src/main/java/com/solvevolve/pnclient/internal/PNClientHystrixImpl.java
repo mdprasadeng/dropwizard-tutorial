@@ -14,21 +14,27 @@ public class PNClientHystrixImpl implements PNClient {
 
   private final Client client;
   private final PNConfiguration pnConfiguration;
+  private final SavePNNetworkCommand.SavePNNetworkFactory savePNNetworkFactory;
+  private final FetchPNNetworkCommand.FetchPNNetworkFactory fetchPNNetworkFactory;
 
   @Inject
-  public PNClientHystrixImpl(Client client, PNConfiguration pnConfiguration) {
+  public PNClientHystrixImpl(Client client, PNConfiguration pnConfiguration,
+                             SavePNNetworkCommand.SavePNNetworkFactory savePNNetworkFactory,
+                             FetchPNNetworkCommand.FetchPNNetworkFactory fetchPNNetworkFactory) {
     this.client = client;
     this.pnConfiguration = pnConfiguration;
+    this.savePNNetworkFactory = savePNNetworkFactory;
+    this.fetchPNNetworkFactory = fetchPNNetworkFactory;
   }
 
 
   @Override
   public boolean saveNetwork(String phoneNumber, PNNetwork pnNetwork) {
-    return new SavePNNetworkCommand(client, pnConfiguration, phoneNumber, pnNetwork).execute();
+    return savePNNetworkFactory.getSavePNNetworkCommand(phoneNumber, pnNetwork).execute();
   }
 
   @Override
   public Optional<PNNetwork> getNetwork(String phoneNumber) {
-    return new FetchPNNetworkCommand(client, pnConfiguration, phoneNumber).execute();
+    return fetchPNNetworkFactory.getFetchPNCommand(phoneNumber).execute();
   }
 }
