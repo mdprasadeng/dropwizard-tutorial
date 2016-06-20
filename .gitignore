@@ -1,6 +1,11 @@
 ### Java template
 *.class
 
+<<<<<<< HEAD
+=======
+.DS_Store
+
+>>>>>>> master
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
@@ -17,6 +22,7 @@ hs_err_pid*
 *.iml
 
 ## Directory-based project format:
+.idea
 .idea/
 .idea/sonarIssues.xml
 .idea/workspace.xml
